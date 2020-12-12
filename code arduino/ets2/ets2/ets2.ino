@@ -31,17 +31,17 @@ const int ERARX1 = 59;  // Essuie glace AR + Lave Vitre AR (V2)
 const uint8_t EGBUTON = A2;   // Analog A2 // Régulateur vitesse
 const uint8_t stateEGBUTON = 2; // state buffer
 
-const int RALPLUS = 1;  // Trip +
-const int RALMOINS = 1; // Trip -
-const int OKRESET = 1;  // Reset/OK
+const int RALPLUS = 124;  // Trip +
+const int RALMOINS = 60; // Trip -
+const int OKRESET = 287;  // Reset/OK
 
 const uint8_t MOLETTE_EG = A3;   // Analog A3 // Sensibilité Essuie Glace
 const uint8_t stateMOLETTE_EG = 3; // state buffer
 
-const int EG1 = 1;      // V1 Sensi
-const int EG2 = 1;      // V2 Sensi
-const int EG3 = 1;      // V3 Sensi
-const int EG4 = 1;      // V4 Sensi
+const int EG1 = 430;      // V1 Sensi
+const int EG2 = 194;      // V2 Sensi
+const int EG3 = 103;      // V3 Sensi
+const int EG4 = 54;      // V4 Sensi
 
 const uint8_t CGVERTI = A4; // Analog A4 // Cligno
 const uint8_t stateCGVERTI =4; // state buffer
@@ -55,18 +55,18 @@ const int CGG = 1; // cligno gauche
 const uint8_t CGHORI = A5; // Analog 5 // pleins phare
 const uint8_t stateCGHORI = 5; // state buffer
 
-const int CGPP =1; // pleins phare
-const int CGFSTOP = 1; // pleins phare stop
-const int CGAPF = 1; // appel de phare
+const int CGPP = 91; // pleins phare
+const int CGFSTOP = 20; // pleins phare stop
+const int CGAPF = 109; // appel de phare
 
 const uint8_t CGBUTON = A6; // Analog 6 // Régulateur
 const uint8_t stateCGbuton = 6; // state buffer
 
-const int REGUPLUS =1; // Régulateur +
-const int REGUMOINS =1; // Régulateur -
-const int REGUON =1; // Régulateur on
-const int REGUCANCEL =1; // régulateur cancel
-const int REGUOFF =1; // R&égulateur off
+const int REGUPLUS = 1; // Régulateur +
+const int REGUMOINS = 1; // Régulateur -
+const int REGUON = 1; // Régulateur on
+const int REGUCANCEL = 1; // régulateur cancel
+const int REGUOFF = 1; // R&égulateur off
 
 const uint8_t tolerence_lecture = 10; // Plage de tolérence pour considéré la valeur lue comme bonne pour une position
 
