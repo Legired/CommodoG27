@@ -14,61 +14,74 @@
 const int EGVERTI = A0;    // Analog A0 Essuie glace AVANT
 const uint8_t stateEGVERTI = 0; // state buffer
 
-const int EGX1 = 428;   // Essuie glace AV x1
-const int EGSTOP = 19;  // Stop
-const int EGV1 = 193;   // Lent
-const int EGV2 = 102;   // Moyen
-const int EGV3 = 53;    // Vite
+const int EGX1 = 235;   // Essuie glace AV x1
+const int EGSTOP = 925;  // Stop
+const int EGV1 = 490;   // Lent
+const int EGV2 = 672;   // Moyen
+const int EGV3 = 805;    // Vite
 
 const uint8_t EGHORI = A1;  // Analog A1 Lave vitre + Essuie glace AR
 const uint8_t stateEGHORI = 1; // state buffer
 
-const int EGAVX1 = 284; // Lave vitre AV
-const int EGARSTOP = 20;// Stop
-const int EGARV1 = 123; // Essuie glace AR (V1)
-const int ERARX1 = 59;  // Essuie glace AR + Lave Vitre AR (V2)
+const int EGAVX1 = 367; // Lave vitre AV
+const int EGARSTOP = 921;// Stop
+const int EGARV1 = 625; // Essuie glace AR (V1)
+const int ERARX1 = 790;  // Essuie glace AR + Lave Vitre AR (V2)
 
 const uint8_t EGBUTON = A2;   // Analog A2 // Régulateur vitesse
 const uint8_t stateEGBUTON = 2; // state buffer
 
-const int RALPLUS = 124;  // Trip +
-const int RALMOINS = 60; // Trip -
-const int OKRESET = 287;  // Reset/OK
+const int RALPLUS = 749;  // Trip +
+const int RALMOINS = 875; // Trip -
+const int OKRESET = 506;  // Reset/OK
 
 const uint8_t MOLETTE_EG = A3;   // Analog A3 // Sensibilité Essuie Glace
 const uint8_t stateMOLETTE_EG = 3; // state buffer
 
-const int EG1 = 430;      // V1 Sensi
-const int EG2 = 194;      // V2 Sensi
-const int EG3 = 103;      // V3 Sensi
-const int EG4 = 54;      // V4 Sensi
+const int EG1 = 45;      // V1 Sensi
+const int EG2 = 35;      // V2 Sensi
+const int EG3 = 26;      // V3 Sensi
+const int EG4 = 15;      // V4 Sensi
 
 const uint8_t CGVERTI = A4; // Analog A4 // Cligno
 const uint8_t stateCGVERTI =4; // state buffer
 
-const int CGD = 1; // cligno droit
-const int CGDX1 = 1; // cligno droit x1
-const int CGSTOP = 1; // cligno stop
-const int CGGX1 = 1; // cligno gauche x1
-const int CGG = 1; // cligno gauche
+const int CGD = 484; // cligno droit
+const int CGSTOP = 98; // cligno stop
+const int CGG = 235; // cligno gauche
 
-const uint8_t CGHORI = A5; // Analog 5 // pleins phare
-const uint8_t stateCGHORI = 5; // state buffer
+const uint8_t CGCLIGNOX1 = A5; // Analog A5 // Cligno x1
+const uint8_t stateCLIGNOX1 =5; // state buffer
 
-const int CGPP = 91; // pleins phare
-const int CGFSTOP = 20; // pleins phare stop
-const int CGAPF = 109; // appel de phare
+const int CGX1 = 1022; // cligno x1
+const int CGX1STOP = 0; // cligno x1 stop
 
-const uint8_t CGBUTON = A6; // Analog 6 // Régulateur
-const uint8_t stateCGbuton = 6; // state buffer
+const uint8_t CGHORI = A6; // Analog 6 // pleins phare
+const uint8_t stateCGHORI = 6; // state buffer
 
-const int REGUPLUS = 1; // Régulateur +
-const int REGUMOINS = 1; // Régulateur -
-const int REGUON = 1; // Régulateur on
-const int REGUCANCEL = 1; // régulateur cancel
-const int REGUOFF = 1; // R&égulateur off
+const int CGPP = 190; // pleins phare
+const int CGFSTOP = 58; // pleins phare stop
 
-const uint8_t tolerence_lecture = 10; // Plage de tolérence pour considéré la valeur lue comme bonne pour une position
+const uint8_t CGHORI2 = A7; // Analog 7 // appel phare
+const uint8_t stateCGHORI2 = 7; // state buffer
+
+const int CGAPF = 260; // appel de phare
+const int CGAPFSTOP = 57; // appel de phare stop
+
+const uint8_t CGBUTON = A8; // Analog 8 // Régulateur
+const uint8_t stateCGbuton = 8; // state buffer
+
+const int REGUPLUS = 238; // Régulateur +
+const int REGUMOINS = 488; // Régulateur -
+
+const uint8_t CGMOLREGU = A9; // Analog 9 // Régulateur molette
+const uint8_t stateMOLREG = 9; // state buffer
+
+const int REGUON = 236; // Régulateur on
+const int REGUCANCEL = 485; // régulateur cancel
+const int REGUOFF = 98; // R&égulateur off
+
+const uint8_t tolerence_lecture = 5; // Plage de tolérence pour considéré la valeur lue comme bonne pour une position
 
 int8_t stateCligno = 0; // Cligno neutre 0 ; Cligno gauche -1 ; Cligno Droite 1
 int8_t origCligno = 0;  // Variable de comparaison etat cligno
@@ -82,6 +95,11 @@ int8_t statePF = 0;     // Pleins phare
 int8_t origPF = 0;      // Variable de comparaison Pleins Phare
 int8_t stateREGU = 0;   // Régulateur
 int8_t origREGU = 0;    // Variable de comparaison Régulateur
+int8_t stateCGCLIGNOX1 = 0; // Cligno x1
+int8_t stateAPF = 0;	// Appel phare
+int8_t origAPF = 0;		// Variable de comparaison Appel phare
+int8_t stateMOLREGU = 0; // Molette régulateur
+int8_t origMOLREGU = 0; // Variable de comparaison Molette régulateur
 
 
 // Déclaration des touches clavier (QWERTY) correspondant aux positions
@@ -114,7 +132,9 @@ const char C_CGGX1 =    ' ';
 // Pleins phare
 const char C_CGPP =      ' ';
 const char C_CGFSTOP =   ' ';
-const char C_CGAPF =      ' ';
+// appel phare
+const char C_CGAPFSTOP =  ' ';
+const char C_CGAPF =     ' ';
 // Régulateur
 const char C_RPLUS =    ' ';
 const char C_RMOINS =   ' ';
@@ -167,38 +187,41 @@ void setup() {
   if( analogRead(MOLETTE_EG) >= EG4-tolerence_lecture && analogRead(MOLETTE_EG) <= EG4+tolerence_lecture ){ // EG4
     origSEG = 4;
   }
-  if( analogRead(CGVERTI) >= CGD-tolerence_lecture && analogRead(CGVERTI) <= CGD+tolerence_lecture ){ // CGD
+  if( analogRead(CGVERTI) >= CGD-tolerence_lecture && analogRead(CGVERTI) <= CGD+tolerence_lecture && analogRead(CGCLIGNOX1) >= CGX1STOP-tolerence_lecture && analogRead(CGCLIGNOX1) <= CGX1STOP+tolerence_lecture ){ // CGD
     origCligno = 1;
   }
-  if( analogRead(CGVERTI) >= CGDX1-tolerence_lecture && analogRead(CGVERTI) <= CGDX1+tolerence_lecture ){ // CGD
+  if( analogRead(CGVERTI) >= CGD-tolerence_lecture && analogRead(CGVERTI) <= CGD+tolerence_lecture && analogRead(CGCLIGNOX1) >= CGX1-tolerence_lecture && analogRead(CGCLIGNOX1) <= CGX1+tolerence_lecture){ // CGDX1
     origCligno = 2;
   }
-  if( analogRead(CGVERTI) >= CGSTOP-tolerence_lecture && analogRead(CGVERTI) <= CGSTOP+tolerence_lecture ){ // CGD
+  if( analogRead(CGVERTI) >= CGSTOP-tolerence_lecture && analogRead(CGVERTI) <= CGSTOP+tolerence_lecture && analogRead(CGCLIGNOX1) >= CGX1STOP-tolerence_lecture && analogRead(CGCLIGNOX1) <= CGX1STOP+tolerence_lecture){ // CGSTOP
     origCligno = 3;
   }
-  if( analogRead(CGVERTI) >= CGGX1-tolerence_lecture && analogRead(CGVERTI) <= CGGX1+tolerence_lecture ){ // CGD
+  if( analogRead(CGVERTI) >= CGG-tolerence_lecture && analogRead(CGVERTI) <= CGG+tolerence_lecture && analogRead(CGCLIGNOX1) >= CGX1-tolerence_lecture && analogRead(CGCLIGNOX1) <= CGX1+tolerence_lecture){ // CGGX1
     origCligno = 4;
   }
-  if( analogRead(CGVERTI) >= CGG-tolerence_lecture && analogRead(CGVERTI) <= CGG+tolerence_lecture ){ // CGD
+  if( analogRead(CGVERTI) >= CGG-tolerence_lecture && analogRead(CGVERTI) <= CGG+tolerence_lecture && analogRead(CGCLIGNOX1) >= CGX1STOP-tolerence_lecture && analogRead(CGCLIGNOX1) <= CGX1STOP+tolerence_lecture ){ // CGD
     origCligno = 5;
   }
-  if( analogRead(CGHORI) >= CGPP-tolerence_lecture && analogRead(CGHORI) <= CGPP+tolerence_lecture ){ // CPP
+  if( analogRead(CGHORI) >= CGFSTOP-tolerence_lecture && analogRead(CGHORI) <= CGFSTOP+tolerence_lecture ){ // CGPSTOP
     origPF = 0;
   }
-  if( analogRead(CGHORI) >= CGFSTOP-tolerence_lecture && analogRead(CGHORI) <= CGFSTOP+tolerence_lecture ){ // CGPSTOP
-    origPF = 1;
+  if( analogRead(CGHORI) >= CGPP-tolerence_lecture && analogRead(CGHORI) <= CGPP+tolerence_lecture ){ // CPP
+    origAPF = 1;
   }
-  if( analogRead(CGHORI) >= CGAPF-tolerence_lecture && analogRead(CGHORI) <= CGAPF+tolerence_lecture ){ // CGAPF
-    origPF = 2;
+  if( analogRead(CGHORI2) >= CGAPFSTOP-tolerence_lecture && analogRead(CGHORI2) <= CGAPFSTOP+tolerence_lecture ){ // CGAPF STOP
+    origAPF = 0;
   }
-  if( analogRead(CGBUTON) >= REGUON-tolerence_lecture && analogRead(CGBUTON) <= REGUON+tolerence_lecture ){ // REGUON
-    origREGU = 0;
+  if( analogRead(CGHORI2) >= CGAPF-tolerence_lecture && analogRead(CGHORI2) <= CGAPF+tolerence_lecture ){ // CGAPF
+    origAPF = 1;
   }
-  if( analogRead(CGBUTON) >= REGUCANCEL-tolerence_lecture && analogRead(CGBUTON) <= REGUCANCEL+tolerence_lecture ){ // REGUCANCEL
-    origREGU = 1;
+  if( analogRead(stateMOLREGU) >= REGUON-tolerence_lecture && analogRead(stateMOLREGU) <= REGUON+tolerence_lecture ){ // REGUON
+    origMOLREGU = 0;
   }
-  if( analogRead(CGBUTON) >= REGUOFF-tolerence_lecture && analogRead(CGBUTON) <= REGUOFF+tolerence_lecture ){ // REGUOFF
-    origREGU = 2;
+  if( analogRead(stateMOLREGU) >= REGUCANCEL-tolerence_lecture && analogRead(stateMOLREGU) <= REGUCANCEL+tolerence_lecture ){ // REGUCANCEL
+    origMOLREGU = 1;
+  }
+  if( analogRead(stateMOLREGU) >= REGUOFF-tolerence_lecture && analogRead(stateMOLREGU) <= REGUOFF+tolerence_lecture ){ // REGUOFF
+    origMOLREGU = 2;
   }
   // initialisation interface serie => 16u2
   while (!Serial);
@@ -350,19 +373,19 @@ void sendComCligno(){ // fonction d'envoie des touches clavier pour les Cligno
 }
 
 void readCG() { // Lecture du Cligno
-  if( analogRead(CGVERTI) >= CGD-tolerence_lecture && analogRead(CGVERTI) <= CGD+tolerence_lecture ){ // CGD
+  if( analogRead(CGVERTI) >= CGD-tolerence_lecture && analogRead(CGVERTI) <= CGD+tolerence_lecture && analogRead(CGCLIGNOX1) >= CGX1STOP-tolerence_lecture && analogRead(CGCLIGNOX1) <= CGX1STOP+tolerence_lecture){ // CGD
     stateSEG = 1;
   }
-  if( analogRead(CGVERTI) >= CGDX1-tolerence_lecture && analogRead(CGVERTI) <= CGDX1+tolerence_lecture ){ // CGDX1
+  if( analogRead(CGVERTI) >= CGD-tolerence_lecture && analogRead(CGVERTI) <= CGD+tolerence_lecture && analogRead(CGCLIGNOX1) >= CGX1-tolerence_lecture && analogRead(CGCLIGNOX1) <= CGX1+tolerence_lecture){ // CGDX1
     stateSEG = 2;
   }
-  if( analogRead(CGVERTI) >= CGSTOP-tolerence_lecture && analogRead(CGVERTI) <= CGSTOP+tolerence_lecture ){ // CGSTOP
+  if( analogRead(CGVERTI) >= CGSTOP-tolerence_lecture && analogRead(CGVERTI) <= CGSTOP+tolerence_lecture && analogRead(CGCLIGNOX1) >= CGX1STOP-tolerence_lecture && analogRead(CGCLIGNOX1) <= CGX1STOP+tolerence_lecture){ // CGSTOP
     stateSEG = 3;
   }
-  if( analogRead(CGVERTI) >= CGGX1-tolerence_lecture && analogRead(CGVERTI) <= CGGX1+tolerence_lecture ){ // CGGX1
+  if( analogRead(CGVERTI) >= CGG-tolerence_lecture && analogRead(CGVERTI) <= CGG+tolerence_lecture && analogRead(CGCLIGNOX1) >= CGX1-tolerence_lecture && analogRead(CGCLIGNOX1) <= CGX1+tolerence_lecture){ // CGGX1
     stateSEG = 4;
   }
-  if( analogRead(CGVERTI) >= CGG-tolerence_lecture && analogRead(CGVERTI) <= CGG+tolerence_lecture ){ // CGG
+  if( analogRead(CGVERTI) >= CGG-tolerence_lecture && analogRead(CGVERTI) <= CGG+tolerence_lecture && analogRead(CGCLIGNOX1) >= CGX1STOP-tolerence_lecture && analogRead(CGCLIGNOX1) <= CGX1STOP+tolerence_lecture){ // CGG
     stateSEG = 5;
   }
   if(origCligno != stateCligno){
@@ -373,25 +396,20 @@ void readCG() { // Lecture du Cligno
 
 void sendComPF(){ // fonction d'envoie des touches clavier pour les pleins phare
   buf[0] = statePF;
-  if (statePF == 1){
+  if (statePF == 0){
     buf[1] = C_CGPP;
-  } else if (statePF == 2){
+  } else if (statePF == 1){
     buf[1] = C_CGFSTOP;
-  } else if (statePF == 3){
-    buf[1] = C_CGAPF;
   }
   Serial.write(buf, 2);
 }
 
 void readPF() { // Lecture des pleins phare
   if( analogRead(CGHORI) >= CGPP-tolerence_lecture && analogRead(CGHORI) <= CGPP+tolerence_lecture ){ // CGPP
-    stateSEG = 1;
+    stateSEG = 0;
   }
   if( analogRead(CGHORI) >= CGFSTOP-tolerence_lecture && analogRead(CGHORI) <= CGFSTOP+tolerence_lecture ){ // CGFSTOP
-    stateSEG = 2;
-  }
-  if( analogRead(CGHORI) >= CGAPF-tolerence_lecture && analogRead(CGHORI) <= CGAPF  +tolerence_lecture ){ // CGAPF
-    stateSEG = 3;
+    stateSEG = 1;
   }
   if(origPF != statePF){
     origPF = statePF;
@@ -399,30 +417,53 @@ void readPF() { // Lecture des pleins phare
   }
 }
 
-void sendComREGU(){ // fonction d'envoie des touches clavier pour le régulateur
-  if (stateREGU == 1){
+void sendComAPF(){ // fonction d'envoie des touches clavier pour les pleins phare
+  buf[0] = stateAPF;
+  if (stateAPF == 0){
+    buf[1] = C_CGAPFSTOP;
+  } else if (stateAPF == 1){
+    buf[1] = C_CGAPF;
+  }
+  Serial.write(buf, 2);
+}
+
+void readAPF() { // Lecture des pleins phare
+  if( analogRead(CGHORI2) >= CGAPFSTOP-tolerence_lecture && analogRead(CGHORI2) <= CGAPFSTOP+tolerence_lecture ){ // CGAPF STOP
+    stateSEG = 0;
+  }
+  if( analogRead(CGHORI2) >= CGAPF-tolerence_lecture && analogRead(CGHORI2) <= CGAPF+tolerence_lecture ){ // CGAF
+    stateSEG = 1;
+  }
+  if(origAPF != stateAPF){
+    origAPF = stateAPF;
+    sendComAPF();
+  }
+}
+
+void sendComMOLREGU(){ // fonction d'envoie des touches clavier pour le régulateur
+  if (stateMOLREGU == 1){
     buf[1] = C_RON;
-  } else if (stateREGU == 2){
+  } else if (stateMOLREGU == 2){
     buf[1] = C_RCANCEL;
-  } else if (stateREGU == 3){
+  } else if (stateMOLREGU == 3){
     buf[1] = C_RSTOP;
   }
   Serial.write(buf, 2);
 }
 
-void readREGU() { // Lecture molette du Régulateur
-  if( analogRead(CGBUTON) >= REGUON-tolerence_lecture && analogRead(CGBUTON) <= REGUON+tolerence_lecture ){ // REGUON
-    stateREGU = 1;
+void readMOLREGU() { // Lecture molette du Régulateur
+  if( analogRead(CGMOLREGU) >= REGUON-tolerence_lecture && analogRead(CGMOLREGU) <= REGUON+tolerence_lecture ){ // REGUON
+    stateMOLREGU = 1;
   }
-  if( analogRead(CGBUTON) >= REGUCANCEL-tolerence_lecture && analogRead(CGBUTON) <= REGUCANCEL+tolerence_lecture ){ // REGUCANCEL
-    stateREGU = 2;
+  if( analogRead(CGMOLREGU) >= REGUCANCEL-tolerence_lecture && analogRead(CGMOLREGU) <= REGUCANCEL+tolerence_lecture ){ // REGUCANCEL
+    stateMOLREGU = 2;
   }
-  if( analogRead(CGBUTON) >= REGUOFF-tolerence_lecture && analogRead(CGBUTON) <= REGUOFF+tolerence_lecture ){ // REGUOFF
-    stateREGU = 3;
+  if( analogRead(CGMOLREGU) >= REGUOFF-tolerence_lecture && analogRead(CGMOLREGU) <= REGUOFF+tolerence_lecture ){ // REGUOFF
+    stateMOLREGU = 3;
   }
-  if(origREGU != stateREGU){
-    origREGU = stateREGU;
-    sendComREGU();
+  if(origMOLREGU != stateMOLREGU){
+    origMOLREGU = stateMOLREGU;
+    sendComMOLREGU();
   }
 }
 
@@ -452,6 +493,7 @@ void loop() {
   readSEG();
   readCG();
   readPF();
-  readREGU();
+  readAPF();
+  readMOLREGU();
   readREGUBUTON();
 }
