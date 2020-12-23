@@ -15,10 +15,17 @@ const uint8_t stateEGBUTON = 2; // state buffer
 const uint8_t stateMOLETTE_EG = 3; // state buffer
 // Analog A4 // Cligno
 const uint8_t stateCGVERTI = 4; // state buffer
-// Analog A5 // pleins phare
-const uint8_t stateCGHORI = 5; // state buffer
-// Analog A6 // Régulateur
-const uint8_t stateCGbuton = 6; // state buffer
+//Analog A5// Clignox1
+const uint_t stateCLIGNOX1 = 5; // state buffer
+// Analog A6 // pleins phare
+const uint8_t stateCGHORI = 6; // state buffer
+// Analog A7 // Appel phare
+const uint8_t stateCGHORI2 = 7; // state buffer
+// Analog A8 // Régulateur
+const uint8_t stateCGbuton = 8; // state buffer
+// Analog A9 // Régulateur Molette
+const uint8_t stateCGMOLREG = 9; // state buffer
+// Analog
 
 void setup() {
   // démarrage lien série vers le mega
